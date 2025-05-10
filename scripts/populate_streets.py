@@ -107,6 +107,8 @@ class StreetDBPopulator:
 
             original_name = tags["name"]
             normalized = self._normalize_name(original_name)
+            if "площадь" in normalized:
+                continue
 
             self.db.execute(
                 """INSERT OR REPLACE INTO streets 
@@ -135,7 +137,9 @@ if __name__ == "__main__":
     parser.add_argument("--region", default="Красноярск", help="Target region name")
     parser.add_argument("--dry-run", action="store_true", help="Test without saving")
     parser.add_argument(
-        "--db-path", default="src/data/streets.db", help="Database file path"
+        "--db-path",
+        default="src/address_parser/data/streets.db",
+        help="Database file path",
     )
     args = parser.parse_args()
 
