@@ -23,7 +23,9 @@ class AddressParser:
 
         :param db_path: path to the SQLite database with streets data
         """
-        self._db_path = db_path or str(files("data").joinpath("streets.db"))
+        self._db_path = db_path or str(
+            files("address_parser.data").joinpath("streets.db")
+        )
         self.db: aiosqlite.Connection | None = None
 
     async def __aenter__(self):
