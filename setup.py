@@ -17,7 +17,7 @@ setup(
     packages=find_packages(where="src"),
     package_dir={"": "src"},
     package_data={
-        "address_parser": ["data/streets.db"],
+        "address_parser.data": ["streets.db"],
     },
     install_requires=["aiosqlite>=0.21.0"],
     extras_require={"streets-db": ["overpass", "requests"]},
